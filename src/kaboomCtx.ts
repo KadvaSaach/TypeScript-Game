@@ -1,5 +1,5 @@
 import kaboom from "kaboom";
-import {scale } from "./constans";
+import { scale } from "./constants";
 
 export const k = kaboom({
   width: 256 * scale,
