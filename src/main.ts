@@ -1,4 +1,5 @@
 import { k } from "./kaboomCtx";
+import { makeMap } from "./utils";
 
 // all the logic
 async function gameSetup() {
@@ -20,6 +21,11 @@ async function gameSetup() {
 
   k.loadSprite("level-1", "./level-1.png");
 
+  const { map: level1Layout, spawnPts: level1SpawnPts } = await makeMap(
+    k,
+    "level-1"
+  );
+
   k.scene("level-1", async () => {
     k.setGravity(2100);
     k.add([
@@ -27,6 +33,8 @@ async function gameSetup() {
       k.color(k.Color.fromHex("#f7d7db")),
       k.fixed(),
     ]);
+
+    k.add(level1Layout);
   });
 
   k.go("level-1");
